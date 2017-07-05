@@ -2,15 +2,6 @@ body {
 	background-color: #252830;
 }
 
-.navbar .navbar-nav {
-  display: inline-block;
-}
-
-.nav li {
-  float: left;
-  margin-right: 15px;
-}
-
-.pointer {
-	cursor: pointer;
+.headline {
+	color: white;
 }
