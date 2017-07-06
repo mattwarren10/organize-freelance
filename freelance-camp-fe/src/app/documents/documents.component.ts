@@ -1,36 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Document } from './document';
+import { DocumentService } from './document.service'
+import { Observable } from 'rxjs/rx'
 
 @Component({
 	moduleId: module.id,
 	selector: 'documents',
 	templateUrl: 'documents.component.html',
-	styleUrls: ['documents.component.css']
+	styleUrls: ['documents.component.css'],
+	providers: [ DocumentService ]
 })
 
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
 	pageTitle: string = "Document Dashboard"
-	documents: Document[] = [
-		{
-			title: "My First Doc",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur perferendis, quae eum nisi ea animi dicta non nostrum necessitatibus consectetur vero explicabo, ipsam quod laudantium officiis quasi. Culpa, saepe, eveniet.",
-			file_url: "http://google.com",
-			updated_at: "7/4/17",
-			image_url: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg'
-		},
-		{
-			title: "My Second Doc",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur perferendis, quae eum nisi ea animi dicta non nostrum necessitatibus consectetur vero explicabo, ipsam quod laudantium officiis quasi. Culpa, saepe, eveniet.",
-			file_url: "http://google.com",
-			updated_at: "7/4/17",
-			image_url: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg'
-		},
-		{
-			title: "My Last Doc",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur perferendis, quae eum nisi ea animi dicta non nostrum necessitatibus consectetur vero explicabo, ipsam quod laudantium officiis quasi. Culpa, saepe, eveniet.",
-			file_url: "http://google.com",
-			updated_at: "7/4/17",
-			image_url: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg'
-		}
-	]
+	documents: Document[];
+	errorMessage: string;
+	mode = "Observable";
+
+	constructor(
+		private documentService: DocumentService
+		) {}
+
+	ngOnInit() {
+		let timer = Observable.timer(0, 5000);
+		timer.subscribe(() => this.getDocuments());
+	}
+
+	getDocuments() {
+		this.documentService.getDocuments()
+			.subscribe(
+				documents => this.documents = documents,
+				error => this.errorMessage = <any>error
+			);
+	}
 }
