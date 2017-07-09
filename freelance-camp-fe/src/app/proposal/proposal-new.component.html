@@ -97,8 +97,7 @@
 						<label for="client_email">Client Email <em>(Optional)</em></label>
 						<input type="email"
 							class="form-control"
-							id="client_email"				
-							required
+							id="client_email"											
 							name="client_email"
 							#client_email='ngModel'
 							[(ngModel)]="proposal.client_email"
@@ -111,6 +110,13 @@
 					>
 						Generate Proposal
 					</button>
+					<div 
+						[hidden]="!submitted"
+						class="alert alert-success" 
+						role="alert"
+					>Your proposal has been generated.s
+						<a routerLink="/proposals" class="alert-link">View all proposals</a>
+					</div>
 				</form>
 			</div>
 		</div>
