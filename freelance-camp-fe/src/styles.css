@@ -6,3 +6,8 @@ body {
 .headline {
 	color: white;
 }
+
+
+.pointer {
+	cursor: pointer;
+}
