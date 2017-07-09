@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Proposal } from './proposal'
 import { ProposalService } from './proposal.service'
-import { Observable } from 'rxjs/rx'
+import { Observable } from 'rxjs/Rx'
 import { Router } from '@angular/router'
 
 @Component({

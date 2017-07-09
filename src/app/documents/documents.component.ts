@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Document } from './document';
 import { DocumentService } from './document.service'
-import { Observable } from 'rxjs/rx'
+import { Observable } from 'rxjs/Rx'
 
 @Component({
 	moduleId: module.id,
